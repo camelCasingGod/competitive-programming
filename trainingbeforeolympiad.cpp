@@ -55,28 +55,9 @@ template <class T, class V> void _print(unordered_map <T, V> v) {cerr << "[ "; f
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void solve() {
-    ll n; cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++) {
-        int num; cin >> num;
-        arr[i] = num;
-    }
-    int t1 = INT_MAX; int t2 = INT_MAX;
-    int ans = 0;
-    for (int i = 0; i < n; i++) {
-        if (t1 > t2) {
-            swap(t1, t2);
-        }
-        if (arr[i] <= t1) {
-            t1 = arr[i];
-        } else if (arr[i] <= t2) {
-            t2 = arr[i];
-        } else {
-            t1 = arr[i];
-            ans++;
-        }
-    }
-    cout << ans << endl;
+
+    // look at solution
+    
 }
 
 int32_t main()

@@ -55,35 +55,24 @@ template <class T, class V> void _print(unordered_map <T, V> v) {cerr << "[ "; f
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void solve() {
-    ll n; cin >> n;
-    int arr[n];
-    for (int i = 0; i < n; i++) {
-        int num; cin >> num;
-        arr[i] = num;
+    string s; cin >> s;
+    unordered_set<char> letters;
+    for (int i = 0; i < s.size(); i++) {
+        letters.insert(s[i]);
     }
-    int t1 = INT_MAX; int t2 = INT_MAX;
-    int ans = 0;
-    for (int i = 0; i < n; i++) {
-        if (t1 > t2) {
-            swap(t1, t2);
-        }
-        if (arr[i] <= t1) {
-            t1 = arr[i];
-        } else if (arr[i] <= t2) {
-            t2 = arr[i];
-        } else {
-            t1 = arr[i];
-            ans++;
-        }
+
+    if (letters.size() % 2) {
+        cout << "IGNORE HIM!" << endl;
+    } else {
+        cout << "CHAT WITH HER!" << endl;
     }
-    cout << ans << endl;
 }
 
 int32_t main()
 {
-    FAST_IO;
-    int TC = 1;
-    cin >> TC;
-    while (TC--) 
+    // FAST_IO;
+    // int TC = 1;
+    // cin >> TC;
+    // while (TC--) 
         solve();
 }
