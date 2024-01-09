@@ -54,40 +54,48 @@ template <class T, class V> void _print(multimap <T, V> v) {cerr << "[ "; for (a
 template <class T, class V> void _print(unordered_map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void solve() {
+int dr[8] = {0, -1, -1, -1, 0, 1, 1, 1};
+int dc[8] = {1, 1, 0, -1, -1, -1, 0, 1};
 
-    // look at solution
-    int n; cin >> n;
-    int num_odd = 0;
-    int result = 0;
-    for (int i = 0; i < n; i++) {
-        int num; cin >> num;
-        if (num % 2 == 1) {
-            num_odd++;
-        }
-        result += num;
-        if (num_odd % 3 == 0) {
-        cout << result - num_odd / 3 << endl;
-        } else if (num_odd % 3 == 1) {
-            if (i + 1 == 1) {
-                cout << result % LLM << endl;
-            } else {
-                int o = result - floor(num_odd / 3) - 1;
-                cout << o % LLM << endl;
-            }
-        } else {
-            int o = result - floor(num_odd / 3);
-            cout << o % LLM << endl;
+void solve() {
+    char s[3][3];
+    for (int i = 0; i< 3; i++) {
+        string st; cin >> st;
+        for (int j = 0; j < 3; j++) {
+            s[i][j] = st[j];
         }
     }
+    vector<string> result;
+    for (int c1 = 0; c1 < 3; c1++) {
+        for (int c2 = 0; c2 < 3; c2++) {
+            for (int c3 = 0; c3 < 3; c3++) {
+                for (int r1 = 0; r1 < 3; r1++) {
+                    for (int r2 = 0; r2 < 3; r2++) {
+                        for (int r3 = 0; r3 < 3; r3++) {
+                            pair<ll, ll> p1, p2, p3;
+                            p1.first = c1; p1.second = r1;
+                            p2.first = c2; p2.second = r2;
+                            p3.first = c3; p3.second = r3;
+                            if (abs(c1 - c2) <= 1 && abs(c2 - c3) <= 1 && abs(r1 - r2) <= 1 && abs(r2 - r3) <= 1 && !(c1 == c2 && r1 == r2) && !(c2 == c3 && r2 == r3) && !(c1 == c3 && r1 == r3)) {
+                                result.push_back((string) {s[c1][r1], s[c2][r2], s[c3][r3]});
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    sort(result.begin(), result.end());
+    cout << result.front() << endl;
 
 }
 
+
 int32_t main()
 {
-    FAST_IO;
-    int TC = 1;
-    cin >> TC;
-    while (TC--) 
+    // FAST_IO;
+    // int TC = 1;
+    // cin >> TC;
+    // while (TC--) 
         solve();
 }

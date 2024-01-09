@@ -56,31 +56,37 @@ template <class T, class V> void _print(unordered_map <T, V> v) {cerr << "[ "; f
 
 void solve() {
 
-    // look at solution
-    int n; cin >> n;
-    int num_odd = 0;
-    int result = 0;
-    for (int i = 0; i < n; i++) {
-        int num; cin >> num;
-        if (num % 2 == 1) {
-            num_odd++;
-        }
-        result += num;
-        if (num_odd % 3 == 0) {
-        cout << result - num_odd / 3 << endl;
-        } else if (num_odd % 3 == 1) {
-            if (i + 1 == 1) {
-                cout << result % LLM << endl;
-            } else {
-                int o = result - floor(num_odd / 3) - 1;
-                cout << o % LLM << endl;
-            }
+    string s; cin >> s;
+    ll z = 0;
+    ll y = 0;
+    for (int i = 0; i < s.size(); ++i) {
+        if (s[i] == '0') {
+            y++;
         } else {
-            int o = result - floor(num_odd / 3);
-            cout << o % LLM << endl;
+            z++;
         }
     }
-
+    ll t = 0;
+    for (int i = 0; i < s.size(); ++i) {
+        if (s[i] == '0') {
+            if (z <= 0) {
+                cout << s.size() - t << endl;
+                return;
+            } else {
+                --z;
+                ++t;
+            }
+        } else {
+            if (y <= 0) {
+                cout << s.size() - t << endl;
+                return;
+            } else {
+                --y;
+                ++t;
+            }
+        }
+    }
+    cout << 0 << endl;
 }
 
 int32_t main()
