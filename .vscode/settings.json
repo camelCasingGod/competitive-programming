@@ -4,6 +4,19 @@
         "stacktrace": "cpp",
         "source_location": "cpp",
         "__tree": "cpp",
-        "map": "cpp"
-    }
+        "map": "cpp",
+        "__bit_reference": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "set": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "algorithm": "cpp",
+        "format": "cpp",
+        "regex": "cpp",
+        "span": "cpp",
+        "deque": "cpp",
+        "stack": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
