@@ -57,18 +57,17 @@ template <class T, class V> void _print(unordered_map <T, V> v) {cerr << "[ "; f
 void solve() {
     int n, f, a, b;
     cin >> n >> f >> a >> b;
-    int prev = 0;
+    int prev = 0; int num_remaining = n;
     for (int i = 0; i < n; i++) {
         int moment; cin >> moment;
-        if ((moment - prev) * a >= f && b >= f) {
-            cout << "NO" << endl;
-            return;
-        } else {
-            f -= min((moment - prev) * a, b);
-            prev = moment;
-        }
+        // get to the new moment greedily
+        f -= min((moment - prev) * a, b);
+        prev = moment;
+        if (f > 0) num_remaining--;
+        
     }
-    cout << "YES" << endl;
+    if (num_remaining == 0) cout << "YES" << endl;
+    else cout << "NO" << endl;
 }
 
 int32_t main()
